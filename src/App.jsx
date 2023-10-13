@@ -48,7 +48,7 @@ function App() {
         }}
         className="container d-flex flex-column align-items-center justify-content-start"
       >
-        <h1>Todo List</h1>
+        <h1>To Do List</h1>
         <input
           className="form-control form-control-lg"
           type="text"
