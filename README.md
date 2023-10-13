@@ -4,7 +4,7 @@ This was a [4GeekAcademy](https://4geeksacademy.com/us/index) meetup where I lea
 
 [![Code Repo](<https://img.shields.io/badge/Code_Source_(Repo)-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white>)](https://github.com/dotfortun/todo-react-seminar)
 [![To Do App DeMo](<https://img.shields.io/badge/To_Do_App_(demo)-76D04B.svg?style=for-the-badge&logo=Demo&logoColor=white>)](https://todo-react-vite-five.vercel.app)
-[![Youtube](https://img.shields.io/badge/YouTube-FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/BMhtQqSEkmU?t=1632)
+[![Youtube](https://img.shields.io/badge/YouTube-FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/BMhtQqSEkmU?)
 
 ### Built With 🔑
 
