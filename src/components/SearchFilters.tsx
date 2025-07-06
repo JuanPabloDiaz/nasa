@@ -10,9 +10,9 @@ interface SearchFiltersProps {
   initialFilters?: Record<string, string>
 }
 
-export const SearchFilters: React.FC<SearchFiltersProps> = ({ 
-  onFiltersChange, 
-  initialFilters = {} 
+export const SearchFilters: React.FC<SearchFiltersProps> = ({
+  onFiltersChange,
+  initialFilters = {},
 }) => {
   const mediaTypeOptions: FilterOption[] = [
     { value: 'all', label: 'All Media' },
@@ -24,7 +24,7 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
   const handleFilterChange = (key: string, value: string) => {
     onFiltersChange({
       ...initialFilters,
-      [key]: value
+      [key]: value,
     })
   }
 
@@ -32,16 +32,19 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
     <div className="flex flex-wrap items-center gap-4">
       {/* Media Type Filter */}
       <div className="flex items-center space-x-2">
-        <label htmlFor="media-type" className="text-sm font-medium text-gray-300">
+        <label
+          htmlFor="media-type"
+          className="text-sm font-medium text-gray-300"
+        >
           Type:
         </label>
         <select
           id="media-type"
           value={initialFilters.mediaType || 'all'}
-          onChange={(e) => handleFilterChange('mediaType', e.target.value)}
+          onChange={e => handleFilterChange('mediaType', e.target.value)}
           className="bg-black bg-opacity-30 border border-white border-opacity-20 rounded-lg px-3 py-2 text-star-white text-sm focus:outline-none focus:ring-2 focus:ring-nebula-pink"
         >
-          {mediaTypeOptions.map((option) => (
+          {mediaTypeOptions.map(option => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -57,7 +60,7 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
         <select
           id="year"
           value={initialFilters.year || 'all'}
-          onChange={(e) => handleFilterChange('year', e.target.value)}
+          onChange={e => handleFilterChange('year', e.target.value)}
           className="bg-black bg-opacity-30 border border-white border-opacity-20 rounded-lg px-3 py-2 text-star-white text-sm focus:outline-none focus:ring-2 focus:ring-nebula-pink"
         >
           <option value="all">All Years</option>
@@ -70,7 +73,9 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
       </div>
 
       {/* Clear Filters */}
-      {Object.values(initialFilters).some(value => value && value !== 'all') && (
+      {Object.values(initialFilters).some(
+        value => value && value !== 'all'
+      ) && (
         <button
           onClick={() => onFiltersChange({})}
           className="text-sm text-nebula-pink hover:text-purple-400 transition-colors"

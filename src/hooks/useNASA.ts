@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
-import type { ProcessedMediaItem, SearchParams } from '@/types/nasa.types'
-import { nasaApiService } from '@/services/nasa.service'
+import type { ProcessedMediaItem, SearchParams } from '../types/nasa.types'
+import { nasaApiService } from '../services/nasa.service'
 
 interface UseNASASearchState {
   data: ProcessedMediaItem[]
@@ -25,7 +25,10 @@ export const useNASASearch = (): UseNASASearchReturn => {
     currentPage: 1,
   })
 
-  const [lastSearchParams, setLastSearchParams] = useState<Omit<SearchParams, 'page'> | null>(null)
+  const [lastSearchParams, setLastSearchParams] = useState<Omit<
+    SearchParams,
+    'page'
+  > | null>(null)
 
   const search = useCallback(async (params: Omit<SearchParams, 'page'>) => {
     setState(prev => ({ ...prev, loading: true, error: null, currentPage: 1 }))
@@ -48,7 +51,10 @@ export const useNASASearch = (): UseNASASearchReturn => {
       setState(prev => ({
         ...prev,
         loading: false,
-        error: error instanceof Error ? error.message : 'Failed to search NASA media',
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Failed to search NASA media',
       }))
     }
   }, [])
@@ -76,7 +82,10 @@ export const useNASASearch = (): UseNASASearchReturn => {
       setState(prev => ({
         ...prev,
         loading: false,
-        error: error instanceof Error ? error.message : 'Failed to load more results',
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Failed to load more results',
       }))
     }
   }, [lastSearchParams, state.loading, state.hasMore, state.currentPage])
@@ -142,7 +151,10 @@ export const useMediaDetails = (nasaId: string | undefined) => {
         setState(prev => ({
           ...prev,
           loading: false,
-          error: error instanceof Error ? error.message : 'Failed to fetch media details',
+          error:
+            error instanceof Error
+              ? error.message
+              : 'Failed to fetch media details',
         }))
       }
     }
@@ -174,7 +186,10 @@ export const useFeaturedContent = () => {
         setState({
           data: [],
           loading: false,
-          error: error instanceof Error ? error.message : 'Failed to fetch featured content',
+          error:
+            error instanceof Error
+              ? error.message
+              : 'Failed to fetch featured content',
         })
       }
     }

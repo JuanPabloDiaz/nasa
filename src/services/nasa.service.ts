@@ -5,14 +5,18 @@ import type {
   SearchParams,
   ProcessedMediaItem,
   MediaAsset,
-} from '@/types/nasa.types'
+} from '../types/nasa.types'
 
-const BASE_URL = import.meta.env.VITE_NASA_API_BASE_URL || 'https://images-api.nasa.gov'
+const BASE_URL =
+  import.meta.env.VITE_NASA_API_BASE_URL || 'https://images-api.nasa.gov'
 
 class NASAApiService {
-  private async makeRequest<T>(endpoint: string, params?: Record<string, string>): Promise<T> {
+  private async makeRequest<T>(
+    endpoint: string,
+    params?: Record<string, string>
+  ): Promise<T> {
     const url = new URL(endpoint, BASE_URL)
-    
+
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
         if (value) {
@@ -22,9 +26,11 @@ class NASAApiService {
     }
 
     const response = await fetch(url.toString())
-    
+
     if (!response.ok) {
-      throw new Error(`NASA API request failed: ${response.status} ${response.statusText}`)
+      throw new Error(
+        `NASA API request failed: ${response.status} ${response.statusText}`
+      )
     }
 
     return response.json()
@@ -38,41 +44,46 @@ class NASAApiService {
     if (searchParams.media_type && searchParams.media_type !== 'all') {
       params.media_type = searchParams.media_type
     }
-    
+
     if (searchParams.year_start) {
       params.year_start = searchParams.year_start
     }
-    
+
     if (searchParams.year_end) {
       params.year_end = searchParams.year_end
     }
-    
+
     if (searchParams.center) {
       params.center = searchParams.center
     }
-    
+
     if (searchParams.page) {
       params.page = searchParams.page.toString()
     }
-    
+
     if (searchParams.page_size) {
       params.page_size = searchParams.page_size.toString()
     }
 
-    const response = await this.makeRequest<NASASearchResponse>('/search', params)
-    
+    const response = await this.makeRequest<NASASearchResponse>(
+      '/search',
+      params
+    )
+
     return response.collection.items.map(item => this.processMediaItem(item))
   }
 
   async getAssets(nasaId: string): Promise<MediaAsset> {
-    const response = await this.makeRequest<NASAAssetResponse>(`/asset/${nasaId}`)
-    
+    const response = await this.makeRequest<NASAAssetResponse>(
+      `/asset/${nasaId}`
+    )
+
     const assets: MediaAsset = {}
-    
+
     // Process asset URLs to categorize by size/type
     response.collection.items.forEach(item => {
       const href = item.href.toLowerCase()
-      
+
       if (href.includes('orig')) {
         assets.original = item.href
       } else if (href.includes('large')) {
@@ -137,11 +148,11 @@ class NASAApiService {
     if (description.length <= maxLength) {
       return description
     }
-    
+
     const truncated = description.slice(0, maxLength)
     const lastSpace = truncated.lastIndexOf(' ')
-    
-    return lastSpace > 0 
+
+    return lastSpace > 0
       ? truncated.slice(0, lastSpace) + '...'
       : truncated + '...'
   }
@@ -153,15 +164,16 @@ class NASAApiService {
       'mars',
       'earth',
       'international space station',
-      'apollo'
+      'apollo',
     ]
-    
-    const randomQuery = featuredQueries[Math.floor(Math.random() * featuredQueries.length)]
-    
+
+    const randomQuery =
+      featuredQueries[Math.floor(Math.random() * featuredQueries.length)]
+
     return this.search({
       q: randomQuery,
       page_size: 12,
-      media_type: 'image'
+      media_type: 'image',
     })
   }
 
@@ -182,7 +194,7 @@ class NASAApiService {
       'lunar surface',
       'solar system',
       'black hole',
-      'space shuttle'
+      'space shuttle',
     ]
   }
 }

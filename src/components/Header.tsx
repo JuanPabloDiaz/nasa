@@ -16,8 +16,8 @@ export const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Logo/Brand */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-nebula-pink to-purple-600 flex items-center justify-center">
@@ -40,15 +40,15 @@ export const Header: React.FC = () => {
 
           {/* Navigation */}
           <nav className="flex items-center space-x-4">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="text-star-white hover:text-nebula-pink transition-colors px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10"
             >
               Home
             </Link>
-            <a 
-              href="https://images.nasa.gov/" 
-              target="_blank" 
+            <a
+              href="https://images.nasa.gov/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-star-white hover:text-nebula-pink transition-colors px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10"
             >

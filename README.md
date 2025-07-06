@@ -29,28 +29,32 @@ A modern, responsive React application that showcases NASA's incredible collecti
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/nasa-space-archive.git
    cd nasa-space-archive
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env
    ```
 
 4. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -91,6 +95,7 @@ src/
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 1. Connect your GitHub repository to Vercel
 2. Configure build settings:
    - Build Command: `npm run build`
@@ -98,6 +103,7 @@ src/
 3. Deploy automatically on push to main
 
 ### Netlify
+
 1. Connect your GitHub repository to Netlify
 2. Configure build settings:
    - Build Command: `npm run build`

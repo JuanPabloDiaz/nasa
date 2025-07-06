@@ -21,7 +21,7 @@ export const SearchResultsPage: React.FC = () => {
 
   const handleFilterChange = (filters: Record<string, string>) => {
     const params = new URLSearchParams(searchParams)
-    
+
     Object.entries(filters).forEach(([key, value]) => {
       if (value && value !== 'all') {
         params.set(key, value)
@@ -29,19 +29,21 @@ export const SearchResultsPage: React.FC = () => {
         params.delete(key)
       }
     })
-    
+
     navigate(`/search?${params.toString()}`)
   }
 
   if (!query) {
     return (
       <div className="max-w-4xl mx-auto text-center py-20">
-        <h1 className="text-4xl font-bold text-star-white mb-6">Search the Universe</h1>
+        <h1 className="text-4xl font-bold text-star-white mb-6">
+          Search the Universe
+        </h1>
         <p className="text-xl text-gray-300 mb-8">
           Enter a search term to explore NASA's vast collection of space imagery
         </p>
         <div className="max-w-2xl mx-auto">
-          <SearchBar 
+          <SearchBar
             onSearch={handleSearch}
             placeholder="Search for planets, galaxies, missions..."
             autoFocus
@@ -56,12 +58,12 @@ export const SearchResultsPage: React.FC = () => {
       {/* Search Header */}
       <div className="space-y-6">
         <div className="max-w-3xl mx-auto">
-          <SearchBar 
+          <SearchBar
             onSearch={handleSearch}
             placeholder="Search for planets, galaxies, missions..."
           />
         </div>
-        
+
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-star-white">
@@ -71,8 +73,8 @@ export const SearchResultsPage: React.FC = () => {
               Exploring NASA's image and video library
             </p>
           </div>
-          
-          <SearchFilters 
+
+          <SearchFilters
             onFiltersChange={handleFilterChange}
             initialFilters={{ mediaType }}
           />
@@ -80,11 +82,7 @@ export const SearchResultsPage: React.FC = () => {
       </div>
 
       {/* Results */}
-      <MediaGrid 
-        query={query}
-        mediaType={mediaType}
-        page={page}
-      />
+      <MediaGrid query={query} mediaType={mediaType} page={page} />
     </div>
   )
 }

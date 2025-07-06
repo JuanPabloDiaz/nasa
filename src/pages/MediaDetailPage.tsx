@@ -4,28 +4,34 @@ import { LoadingSpinner } from '../components/LoadingSpinner'
 
 export const MediaDetailPage: React.FC = () => {
   const { nasaId } = useParams<{ nasaId: string }>()
-  
+
   // Mock data - in real app this would use the useMediaDetails hook
   const loading = false
   const error = null
   const mediaItem = {
     nasa_id: nasaId,
     title: 'Hubble Captures a Galactic Waltz',
-    description: 'This stunning image from the NASA/ESA Hubble Space Telescope shows the galaxy NGC 1097, which lies about 45 million light-years away in the constellation of Fornax (The Furnace). NGC 1097 is a barred spiral galaxy, meaning it has a central bar-shaped structure made of stars.',
+    description:
+      'This stunning image from the NASA/ESA Hubble Space Telescope shows the galaxy NGC 1097, which lies about 45 million light-years away in the constellation of Fornax (The Furnace). NGC 1097 is a barred spiral galaxy, meaning it has a central bar-shaped structure made of stars.',
     media_type: 'image',
     date_created: '2023-01-15',
     formattedDate: 'January 15, 2023',
     keywords: ['hubble', 'galaxy', 'spiral', 'space telescope'],
     center: 'GSFC',
-    photographer: 'NASA/ESA Hubble Space Telescope'
+    photographer: 'NASA/ESA Hubble Space Telescope',
   }
 
   const assets = {
-    original: 'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~orig.jpg',
-    large: 'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~large.jpg',
-    medium: 'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~medium.jpg',
-    small: 'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~small.jpg',
-    thumb: 'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~thumb.jpg'
+    original:
+      'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~orig.jpg',
+    large:
+      'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~large.jpg',
+    medium:
+      'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~medium.jpg',
+    small:
+      'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~small.jpg',
+    thumb:
+      'https://images-assets.nasa.gov/image/hubble-captures-a-galactic-waltz/hubble-captures-a-galactic-waltz~thumb.jpg',
   }
 
   if (loading) {
@@ -46,7 +52,9 @@ export const MediaDetailPage: React.FC = () => {
       <div className="max-w-2xl mx-auto text-center py-20">
         <div className="glass-card p-8 rounded-xl">
           <div className="text-6xl mb-4">🛸</div>
-          <h1 className="text-2xl font-bold text-star-white mb-4">Media Not Found</h1>
+          <h1 className="text-2xl font-bold text-star-white mb-4">
+            Media Not Found
+          </h1>
           <p className="text-gray-400 mb-6">
             The requested media item could not be found in NASA's archives.
           </p>
@@ -72,12 +80,22 @@ export const MediaDetailPage: React.FC = () => {
     <div className="max-w-6xl mx-auto space-y-8">
       {/* Back Navigation */}
       <div className="flex items-center space-x-4">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center space-x-2 text-nebula-pink hover:text-purple-400 transition-colors"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
           <span>Back to Search</span>
         </Link>
@@ -98,7 +116,7 @@ export const MediaDetailPage: React.FC = () => {
               )}
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <span className="px-3 py-1 bg-nebula-pink bg-opacity-20 text-nebula-pink rounded-full text-sm font-medium">
               {mediaItem.media_type.toUpperCase()}
@@ -110,7 +128,7 @@ export const MediaDetailPage: React.FC = () => {
         {mediaItem.keywords && mediaItem.keywords.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {mediaItem.keywords.map((keyword, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-2 py-1 text-xs bg-white bg-opacity-10 text-gray-300 rounded"
               >
@@ -134,11 +152,7 @@ export const MediaDetailPage: React.FC = () => {
                 loading="lazy"
               />
             ) : mediaItem.media_type === 'video' ? (
-              <video
-                controls
-                className="w-full h-auto"
-                poster={assets.thumb}
-              >
+              <video controls className="w-full h-auto" poster={assets.thumb}>
                 <source src={assets.original} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -155,7 +169,9 @@ export const MediaDetailPage: React.FC = () => {
         <div className="space-y-6">
           {/* Description */}
           <div className="glass-card p-6 rounded-xl">
-            <h3 className="text-xl font-bold text-star-white mb-4">Description</h3>
+            <h3 className="text-xl font-bold text-star-white mb-4">
+              Description
+            </h3>
             <p className="text-gray-300 leading-relaxed">
               {mediaItem.description}
             </p>
@@ -172,8 +188,18 @@ export const MediaDetailPage: React.FC = () => {
                   className="w-full flex items-center justify-between p-3 bg-white bg-opacity-5 hover:bg-opacity-10 rounded-lg transition-colors"
                 >
                   <span className="text-star-white capitalize">{size}</span>
-                  <svg className="w-4 h-4 text-nebula-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  <svg
+                    className="w-4 h-4 text-nebula-pink"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
                   </svg>
                 </button>
               ))}

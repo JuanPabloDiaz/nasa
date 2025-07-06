@@ -36,18 +36,16 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "react-refresh",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "react-hooks", "react-refresh", "@typescript-eslint"],
   "rules": {
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }
     ],
-    "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "ignoreRestSiblings": true }
+    ],
     "react/prop-types": "off",
     "@typescript-eslint/no-explicit-any": "warn"
   },

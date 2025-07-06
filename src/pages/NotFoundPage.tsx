@@ -12,7 +12,7 @@ export const NotFoundPage: React.FC = () => {
             Houston, we have a problem!
           </h2>
           <p className="text-gray-400 text-lg max-w-md mx-auto">
-            The page you're looking for seems to have drifted into deep space. 
+            The page you're looking for seems to have drifted into deep space.
             Let's get you back to exploring the cosmos.
           </p>
         </div>
@@ -31,26 +31,26 @@ export const NotFoundPage: React.FC = () => {
             Popular destinations:
           </h3>
           <div className="space-y-2">
-            <Link 
-              to="/search?q=mars" 
+            <Link
+              to="/search?q=mars"
               className="block text-nebula-pink hover:text-purple-400 transition-colors"
             >
               🔴 Mars exploration
             </Link>
-            <Link 
-              to="/search?q=earth" 
+            <Link
+              to="/search?q=earth"
               className="block text-nebula-pink hover:text-purple-400 transition-colors"
             >
               🌍 Earth from space
             </Link>
-            <Link 
-              to="/search?q=apollo" 
+            <Link
+              to="/search?q=apollo"
               className="block text-nebula-pink hover:text-purple-400 transition-colors"
             >
               🌙 Apollo missions
             </Link>
-            <Link 
-              to="/search?q=galaxy" 
+            <Link
+              to="/search?q=galaxy"
               className="block text-nebula-pink hover:text-purple-400 transition-colors"
             >
               🌌 Distant galaxies
