@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { SearchBar } from '../components/SearchBar'
 import { MediaGrid } from '../components/MediaGrid'
@@ -8,15 +8,10 @@ import { useNavigate } from 'react-router-dom'
 export const SearchResultsPage: React.FC = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
-  const [currentQuery, setCurrentQuery] = useState('')
 
   const query = searchParams.get('q') || ''
   const mediaType = searchParams.get('type') || 'all'
   const page = parseInt(searchParams.get('page') || '1')
-
-  useEffect(() => {
-    setCurrentQuery(query)
-  }, [query])
 
   const handleSearch = (newQuery: string) => {
     if (newQuery.trim()) {
